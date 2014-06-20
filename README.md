@@ -17,3 +17,7 @@ To use this OSD and / or layout, just clone the code into your .navit folder and
 <xi:include href="${HOME}/.navit/nuc/nuc_osd.xml"/>
 <xi:include href="${HOME}/.navit/nuc/nuc_layout.xml"/>
 ```
+
+This OSD currently looks like this :
+
+![navit-nuc-osd](https://github.com/pgrandin/navit-nuc-layout/raw/master/screenshot.png)
