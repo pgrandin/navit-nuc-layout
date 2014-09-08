@@ -1,49 +1,57 @@
-
+<!-- Items visibility:
+     osd_configuration=1 is always visible 
+     osd_configuration=4 is visible when tracking
+     osd_configuration=6 is visible when routing
+!-->
+<osd name="ifroute" update_period="2" type="cmd_interface" h="1" w="1" x="-1" y="-1" command='osd_configuration= 
+	route.route_status==17 ? 5 : 3
+	' />
 <!-- top -->
-<osd x="0" y="0" w="40" h="40" enabled="yes" type="gps_status" background_color="#00000080" />
-<osd x="40" y="0" w="560" h="40" align="0" type="text" label="${navigation.item.street_name_systematic} ${navigation.item.street_name}" font_size="300" background_color="#00000080" />
-<osd x="600" y="0" w="200" h="40" type="text" font_size="300" align="0" label="${navigation.item.destination_length[named]} / ${navigation.item.destination_time[remaining]}" background_color="#00000080" />
-<osd x="0" y="40"  w="40" h="40" type="navigation_next_turn" background_color="#00000050" icon_src="%s_wh_32_32.png" />
-<osd x="40" y="40" w="600" h="40" align="4" type="text" label="${navigation.item[1].street_name_systematic} ${navigation.item[1].street_name}" font_size="400" background_color="#00000040" />
+<osd x="0" y="0" w="40" h="40" enabled="yes" type="gps_status" background_color="#00000080" osd_configuration="1"/>
+<osd x="40" y="0" w="560" h="40" align="0" type="text" label="${navigation.item.street_name_systematic} ${navigation.item.street_name}" font_size="300" background_color="#00000080" osd_configuration="1"/>
+<osd x="40" y="80" w="560" h="40" align="0" type="text" label="${navit.messages}" font_size="300" background_color="#00000080" osd_configuration="1"/>
+<osd x="600" y="0" w="200" h="40" type="text" font_size="300" align="0" label="${navigation.item.destination_length[named]} / ${navigation.item.destination_time[remaining]}" background_color="#00000080" osd_configuration="6"/>
+<osd x="0" y="40"  w="40" h="40" type="navigation_next_turn" background_color="#00000050" icon_src="%s_wh_32_32.png" osd_configuration="6" />
+<osd x="40" y="40" w="600" h="40" align="4" type="text" label="${navigation.item[1].street_name_systematic} ${navigation.item[1].street_name}" font_size="400" background_color="#00000040" osd_configuration="6"/>
 
 <!-- right panel -->
-<osd x="-160" y="40"  w="160" h="115" type="navigation_next_turn" icon_src="%s_wh_70_70.png" background_color="#00000080" />
-<osd x="-160" y="155" w="160" h="40" type="text" label="${navigation.item[1].length[named]}" font_size="500" background_color="#00000080" />
-<osd x="-160" y="195" w="160" h="60" enabled="yes" type="text" label="${tracking.item.route_speed[value]}" font_size="500" background_color="#00000080" />
-<osd x="-160" y="255" w="85"  h="64" type="button" src="${HOME}/.navit/nuc/gnome_go_down.png" command="zoom_in()" osd_configuration="1"/>
-<osd x="-70"  y="255" w="85"  h="64" type="button" src="${HOME}/.navit/nuc/gnome_go_up.png" command="zoom_out()" osd_configuration="1"/>
+<osd x="-160" y="40"  w="160" h="115" type="navigation_next_turn" icon_src="%s_wh_70_70.png" background_color="#00000080" osd_configuration="6"/>
+<osd x="-160" y="155" w="160" h="40" type="text" label="${navigation.item[1].length[named]}" font_size="500" background_color="#00000080" osd_configuration="6"/>
+<osd x="-160" y="195" w="160" h="60" enabled="yes" type="text" label="${tracking.item.route_speed[value]}" font_size="500" background_color="#00000080" osd_configuration="1"/>
+<osd x="-160" y="255" w="85"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gnome_go_down.png" command="zoom_in()" osd_configuration="1" osd_configuration="1"/>
+<osd x="-70"  y="255" w="85"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gnome_go_up.png" command="zoom_out()" osd_configuration="1" osd_configuration="1"/>
 <osd enabled="yes" type="button" x="-160" y="319" w="64" h="64"
     command="orientation=orientation==0?-1:0;pitch=pitch==0?15:0;zoom=16;pitch==0?zoom_to_route()"
-    src="gui_map_64_64.png"/>
+    src="gui_map_64_64.png" osd_configuration="6"/>
 
-<osd name="button_3d" enabled="yes" type="button" x="-70" y="319" src="$HOME/.navit/nuc/3D.xpm" use_overlay="1" accesskey=" " command='
+<osd name="button_3d" enabled="yes" type="button" x="-70" y="319" src="${NAVIT_SHAREDIR}/navit-nuc-layout/3D.xpm" use_overlay="1" accesskey=" " command='
 pitch=pitch==0?20:0;
 orientation=pitch==0?0:-1;
-osd[@name=="button_3d"].src = pitch==0?"$HOME/.navit/nuc/2D.xpm":"$HOME/.navit/nuc/3D.xpm";
+osd[@name=="button_3d"].src = pitch==0?"${NAVIT_SHAREDIR}/navit-nuc-layout/2D.xpm":"${NAVIT_SHAREDIR}/navit-nuc-layout/3D.xpm";
 zoom=pitch==0?200:15;
 ' 
-/>
+osd_configuration="1" />
 
 <!-- bottom -->
-<osd enabled="yes" x="0" y="-104" w="160" h="26" font_size="150" type="scale"/>
+<osd enabled="yes" x="0" y="-104" w="160" h="26" font_size="150" type="scale" osd_configuration="1"/>
 
 <!-- media -->
-<osd x="0"    y="-64" w="64"  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
-<osd x="0"    y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-low.png"      command='spawn("amixer", "set", "Headphone", "5%-")'/>
-<osd x="64"   y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk-media-forward-rtl.png" command='gui.spotify_previous_track()'/>
-<osd x="128"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_play_ltr.png"    command='gui.spotify_toggle()'/>
-<osd x="-128" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_forward_ltr.png" command='gui.spotify_next_track()'/>
-<osd x="-64"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-high.png"     command='spawn("amixer", "set", "Headphone", "5%+")'/>
+<osd x="0"    y="-64" w="64"  h="64" type="image"  osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/bottom_banner.png" />
+<osd x="0"    y="-64" w="64"  h="64" type="button" osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-low.png"      command='spawn("amixer", "set", "Headphone", "5%-")'/>
+<osd x="64"   y="-64" w="64"  h="64" type="button" osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk-media-forward-rtl.png" command='gui.spotify_previous_track()'/>
+<osd x="128"  y="-64" w="64"  h="64" type="button" osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_play_ltr.png"    command='gui.spotify_toggle()'/>
+<osd x="-128" y="-64" w="64"  h="64" type="button" osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_forward_ltr.png" command='gui.spotify_next_track()'/>
+<osd x="-64"  y="-64" w="64"  h="64" type="button" osd_configuration="1" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-high.png"     command='spawn("amixer", "set", "Headphone", "5%+")'/>
 
-<osd name="icon_route_status" enabled="yes" type="button" command="" src="$HOME/.navit/nuc/no_destination.xpm" x="-196" y="-64" />
+<osd name="icon_route_status" enabled="yes" type="button" command="" src="${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" x="-196" y="-64" />
 <osd name="my_osd_cmdif_1" h="1" w="1"  update_period="2"  enabled="yes" type="cmd_interface" x="-196"  y="-64" command='
     osd[@name=="icon_route_status"].src = 
-    route.route_status==1     ? "$HOME/.navit/nuc/destination_set.xpm" : 
-    (route.route_status==0     ? "$HOME/.navit/nuc/no_destination.xpm" :  
-    (route.route_status==3     ? "$HOME/.navit/nuc/no_route.xpm" : 
-    (route.route_status==5     ? "$HOME/.navit/nuc/calculating_route.xpm" : 
-    (route.route_status==13    ? "$HOME/.navit/nuc/calculating_route.xpm" : 
-    (route.route_status==17    ? "$HOME/.navit/nuc/route.xpm" : 
-    (route.route_status==33    ? "$HOME/.navit/nuc/route.xpm" : "unhandled"
+    route.route_status==1     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/destination_set.xpm" : 
+    (route.route_status==0     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" :  
+    (route.route_status==3     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/no_route.xpm" : 
+    (route.route_status==5     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/calculating_route.xpm" : 
+    (route.route_status==13    ? "${NAVIT_SHAREDIR}/navit-nuc-layout/calculating_route.xpm" : 
+    (route.route_status==17    ? "${NAVIT_SHAREDIR}/navit-nuc-layout/route.xpm" : 
+    (route.route_status==33    ? "${NAVIT_SHAREDIR}/navit-nuc-layout/route.xpm" : "unhandled"
     )))))))
     '  />
