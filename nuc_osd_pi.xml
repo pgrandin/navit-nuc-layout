@@ -1,0 +1,4 @@
+<osd x="-64" y="0"  w="64" h="64" type="navigation_next_turn" icon_src="%s_wh_60_60.png" background_color="#00000080" osd_configuration="6"/>
+<osd x="-160" y="-40" w="160" h="40" type="text" label="${navigation.item[1].length[named]}" font_size="500" background_color="#00000080" osd_configuration="6"/>
+<osd x="0" y="0" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gnome_go_down.png" command="zoom_in()" osd_configuration="1" osd_configuration="1"/>
+<osd x="0"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gnome_go_up.png" command="zoom_out()" osd_configuration="1" osd_configuration="1"/>
