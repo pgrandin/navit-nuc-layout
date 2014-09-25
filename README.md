@@ -14,8 +14,8 @@ Then move all icons to navit-src/navit/xpm/ and run make
 
 To use this OSD and / or layout, just clone the code into your .navit folder and add these 2 lines in your navit.xml (right before your other OSD declaration is fine) :
 ```xml
-<xi:include href="${HOME}/.navit/nuc/nuc_osd.xml"/>
-<xi:include href="${HOME}/.navit/nuc/nuc_layout.xml"/>
+<xi:include href="${HOME}/.navit/nuc_osd_layout/nuc_osd.xml"/>
+<xi:include href="${HOME}/.navit/nuc_osd_layout/nuc_layout.xml"/>
 ```
 
 This OSD currently looks like this :
