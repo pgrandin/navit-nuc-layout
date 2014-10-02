@@ -1,6 +1,8 @@
 navit-nuc-layout
 ================
 
+[![Build Status](https://navit.ci.cloudbees.com/buildStatus/icon?job=navit-nuc-layout)](https://navit.ci.cloudbees.com/job/navit-nuc-layout/)
+
 My own Navit layout based upon android-mdpi
 
 You will probably need the svg icons from : https://github.com/twain47/Open-SVG-Map-Icons
