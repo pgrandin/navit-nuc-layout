@@ -8,10 +8,11 @@
 	' />
 <!-- top -->
 <osd x="0" y="0" w="40" h="40" enabled="yes" type="gps_status" background_color="#00000080" osd_configuration="1"/>
-<osd x="40" y="0" w="560" h="40" align="0" type="text" label="${navigation.item.street_name_systematic} ${navigation.item.street_name}" font_size="300" background_color="#00000080" osd_configuration="1"/>
-<osd x="600" y="0" w="200" h="40" type="text" font_size="300" align="0" label="${navigation.item.destination_length[named]} / ${navigation.item.destination_time[remaining]}" background_color="#00000080" osd_configuration="6"/>
+<osd x="40" y="0" w="500" h="40" align="0" type="text" label="${navigation.item.street_name_systematic} ${navigation.item.street_name}" font_size="300" background_color="#00000080" osd_configuration="1"/>
+<osd x="540" y="0" w="260" h="40" type="text" font_size="300" align="0" label="${vehicle.position_time_iso8601[local;%H:%M]} ${navigation.item.destination_length[named]} / ${navigation.item.destination_time[remaining]}" background_color="#00000080" osd_configuration="6"/>
 <osd x="0" y="40"  w="40" h="40" type="navigation_next_turn" background_color="#00000050" icon_src="%s_wh_32_32.png" osd_configuration="6" />
 <osd x="40" y="40" w="600" h="40" align="4" type="text" label="${navigation.item[1].street_name_systematic} ${navigation.item[1].street_name}" font_size="400" background_color="#00000040" osd_configuration="6"/>
+
 
 <!-- right panel -->
 <osd x="-160" y="40"  w="160" h="115" type="navigation_next_turn" icon_src="%s_wh_70_70.png" background_color="#00000080" osd_configuration="6"/>
@@ -32,16 +33,17 @@ zoom=pitch==0?200:15;
 osd_configuration="6" />
 
 <!-- bottom -->
+<osd x="-160" y="-84" type="j1850" background_color="#00000080"/>
 <osd enabled="yes" x="0" y="-104" w="160" h="26" font_size="150" type="scale" osd_configuration="1"/>
 
 <!-- media -->
-<osd x="0"    y="-64" w="64"  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
+<osd x="0"    y="-64" w=""  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
 <osd x="0"    y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-low.png"      accesskey="-" command='spawn("amixer", "set", "Headphone", "5%-")'/>
 <osd x="64"   y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk-media-forward-rtl.png" accesskey="a" command='gui.spotify_previous_track()'/>
 <osd x="128"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_play_ltr.png"    accesskey="e" command='gui.spotify_toggle()'/>
 <osd x="192"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-muted-blocking-panel.png"    accesskey="m" command='spawn("amixer", "sset", "Headphone", "toggle")'/>
 <osd x="-128" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_forward_ltr.png" accesskey="z" command='gui.spotify_next_track()'/>
-<osd x="-64"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-high.png"     accesskey="1" command='spawn("amixer", "set", "Headphone", "5%+")'/>
+<osd x="-64"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-high.png"     accesskey="1" command='gui.spotify_volume_up()'/>
 <osd x="-264" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/slr-camera-icon.png"       command='spawn("/bin/bash","/home/navit/.navit/take_screenshot.sh")' />
 
 <osd name="icon_route_status" enabled="yes" type="button" command="" src="${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" x="-196" y="-64" />
