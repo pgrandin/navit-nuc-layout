@@ -11,6 +11,9 @@ dependencies:
     - sudo apt-get install libjansson-dev
     - git clone https://github.com/pgrandin/navit.git
     - cd navit; mkdir bin; cd bin; cmake -D graphics/qt_qpainter:BOOL=FALSE -D gui/qml:BOOL=FALSE -D USE_GOOGLEPLACES:BOOL=FALSE ../navit && make
+machine:
+  environment:
+    DISPLAY: :97
 test:
   post:
     - sed -i -e 's@name="Local GPS" profilename="car" enabled="yes" active="1"@name="Local GPS" profilename="car" enabled="no" active="0"@' navit.xml:
@@ -25,6 +28,7 @@ test:
         pwd: navit/bin/navit/
     - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
         pwd: navit/bin/navit/
+    - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/navit_xvfb_97.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :97 -ac -screen 0 800x600x16
     - ./navit:
         pwd: navit/bin/navit/
         background: true
