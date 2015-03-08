@@ -1,7 +1,7 @@
 navit-nuc-layout
 ================
 
-[![Build Status](https://navit.ci.cloudbees.com/buildStatus/icon?job=navit-nuc-layout)](https://navit.ci.cloudbees.com/job/navit-nuc-layout/)
+[![Circle CI](https://circleci.com/gh/pgrandin/navit-nuc-layout.svg?style=svg)](https://circleci.com/gh/pgrandin/navit-nuc-layout)
 
 My own Navit layout based upon android-mdpi
 
