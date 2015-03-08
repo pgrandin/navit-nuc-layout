@@ -10,7 +10,7 @@ dependencies:
     - sudo apt-get install g++
     - sudo apt-get install libjansson-dev
     - git clone https://github.com/pgrandin/navit.git
-    - cd navit; mkdir bin; cd bin; cmake ../navit && make
+    - cd navit; mkdir bin; cd bin; cmake -D graphics/qt_qpainter:BOOL=FALSE -D gui/qml:BOOL=FALSE -D USE_GOOGLEPLACES:BOOL=FALSE ../navit && make
 test:
   post:
     - sed -i -e 's@name="Local GPS" profilename="car" enabled="yes" active="1"@name="Local GPS" profilename="car" enabled="no" active="0"@' navit.xml:
@@ -20,6 +20,10 @@ test:
     - sed -i -e 's@type="internal" enabled@type="internal" fullscreen="1" font_size="350" enabled@' navit.xml:
         pwd: navit/bin/navit/
     - sed -i -e 's@libbinding_dbus.so" active="no"@libbinding_dbus.so" active="yes"@' navit.xml:
+        pwd: navit/bin/navit/
+    - sed -i -e 's@<osd enabled="no" type="compass"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_osd.xml"/>@' navit.xml:
+        pwd: navit/bin/navit/
+    - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
         pwd: navit/bin/navit/
     - ./navit:
         pwd: navit/bin/navit/
