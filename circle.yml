@@ -45,8 +45,8 @@ test:
     - sleep 2
     - import -window root $CIRCLE_ARTIFACTS/default.png
     - >
-      dbus-send  --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_position string:"geo: $lng $lat"
-      dbus-send  --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_destination string:"geo: $dlng $dlat" string:"dbus"
+      dbus-send --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_position string:"geo: $lng $lat";
+      dbus-send --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_destination string:"geo: $dlng $dlat" string:"dbus";
 
     - sleep 2
     - import -window root $CIRCLE_ARTIFACTS/routing.png
