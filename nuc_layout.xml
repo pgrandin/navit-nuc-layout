@@ -68,11 +68,14 @@
                     <polygon color="#F0F0D8"/>
                     <polyline color="#BFA990"/>
                 </itemgra>
+                <itemgra item_types="poly_water_tiled" order="0-">
+                        <polygon color="#82c8ea"/>
+                </itemgra>
                 <itemgra item_types="poly_nature_reserve" order="12-">
                     <polygon color="#ABDE96"/>
                     <!--<text text_size="3"/>-->
                 </itemgra>
-				<itemgra item_types="poly_reservoir" order="12-">
+			<itemgra item_types="poly_reservoir" order="12-">
                     <polygon color="#B5D0D0"/>
                     <!--<text text_size="3"/>-->
                 </itemgra>
