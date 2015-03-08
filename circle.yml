@@ -15,6 +15,10 @@ dependencies:
 machine:
   environment:
     DISPLAY: :97
+    lat: 48.100463
+    lng: 11.422506
+    dlat: 48.167741
+    dlng: 11.590692
 test:
   post:
     - sed -i -e 's@name="Local GPS" profilename="car" enabled="yes" active="1"@name="Local GPS" profilename="car" enabled="no" active="0"@' navit.xml:
@@ -39,6 +43,11 @@ test:
     - ./navit:
         pwd: navit/bin/navit/
         background: true
-    - sleep 5
+    - sleep 2
     - import -window root $CIRCLE_ARTIFACTS/default.png
+    - dbus-send  --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_position string:"geo: $lng $lat"
+    - dbus-send  --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_destination string:"geo: $dlng $dlat" string:"dbus"
+
+    - sleep 2
+    - import -window root $CIRCLE_ARTIFACTS/routing.png
     - dbus-send  --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.quit
