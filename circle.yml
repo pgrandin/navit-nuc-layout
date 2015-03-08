@@ -9,7 +9,7 @@ dependencies:
     - sudo apt-get install libdbus-glib-1-dev
     - sudo apt-get install g++
     - sudo apt-get install libjansson-dev
-    - sudo apt-get install fluxbox
+    - sudo apt-get install ratpoison
     - git clone https://github.com/pgrandin/navit.git
     - cd navit; mkdir bin; cd bin; cmake -D graphics/qt_qpainter:BOOL=FALSE -D gui/qml:BOOL=FALSE -D USE_GOOGLEPLACES:BOOL=FALSE ../navit && make
 machine:
@@ -30,7 +30,7 @@ test:
     - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
         pwd: navit/bin/navit/
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/navit_xvfb_97.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :97 -ac -screen 0 800x600x16
-    - fluxbox:
+    - ratpoison:
         background: true
     - ./navit:
         pwd: navit/bin/navit/
