@@ -1,6 +1,5 @@
 dependencies:
   pre:
-    - wget -c -O ~/california-latest.bin https://circle-artifacts.com/gh/navit-gps/navit/43/artifacts/0/home/ubuntu/assets/binmaps/california-latest.bin
     - sudo apt-get install cmake
     - sudo apt-get install libpng12-dev 
     - sudo apt-get install libgtk2.0-dev 
