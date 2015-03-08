@@ -10,7 +10,7 @@ dependencies:
     - sudo apt-get install g++
     - sudo apt-get install libjansson-dev
     - git clone https://github.com/pgrandin/navit.git
-    - cd navit; mkdir bin; cmake ../navit && make
+    - cd navit; mkdir bin; cd bin; cmake ../navit && make
 test:
   post:
     - sed -i -e 's@name="Local GPS" profilename="car" enabled="yes" active="1"@name="Local GPS" profilename="car" enabled="no" active="0"@' navit.xml:
