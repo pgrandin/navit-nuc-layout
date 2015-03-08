@@ -29,10 +29,8 @@ test:
         pwd: navit/bin/navit/
     - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
         pwd: navit/bin/navit/
-    - sed -i -e 's/NAVIT_SHAREDIR/HOME/g' nuc_osd.xml:
-        pwd: navit-nuc-layout/
-    - sed -i -e 's@${HOME}/.navit/nuc@${HOME}/navit-nuc-layout@g' nuc_osd.xml:
-        pwd: navit-nuc-layout/
+    - sed -i -e 's/NAVIT_SHAREDIR/HOME/g' nuc_osd.xml
+    - sed -i -e 's@${HOME}/.navit/nuc@${HOME}/navit-nuc-layout@g' nuc_osd.xml
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/navit_xvfb_97.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :97 -ac -screen 0 800x600x16
     - ratpoison:
         background: true
