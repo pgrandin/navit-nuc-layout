@@ -42,7 +42,8 @@ test:
     - ./navit:
         pwd: navit/bin/navit/
         background: true
-    - sleep 2
+# ratpoison display a small popup that results in a back area in the screenshot
+    - sleep 10
     - import -window root $CIRCLE_ARTIFACTS/default.png
     - >
       dbus-send --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_position string:"geo: $lng $lat";
