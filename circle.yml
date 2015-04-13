@@ -36,6 +36,7 @@ test:
         pwd: bin/navit/
     - sed -i -e 's/NAVIT_SHAREDIR/HOME/g' nuc_osd.xml
     - sed -i -e 's@${HOME}/.navit/nuc@${HOME}/navit-nuc-layout@g' nuc_osd.xml
+    - cp bin/navit/navit.xml $CIRCLE_ARTIFACTS/
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/navit_xvfb_97.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :97 -ac -screen 0 800x600x16
     - ratpoison:
         background: true
