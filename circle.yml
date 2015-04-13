@@ -32,7 +32,7 @@ test:
         pwd: navit/bin/navit/
     - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
         pwd: navit/bin/navit/
-    - sed -i -e 's@zoom="256"@zoom="32"@' navit.xml:
+    - sed -i -e 's@zoom="256"@zoom="32" tracking="1"@' navit.xml:
         pwd: navit/bin/navit/
     - sed -i -e 's/NAVIT_SHAREDIR/HOME/g' nuc_osd.xml
     - sed -i -e 's@${HOME}/.navit/nuc@${HOME}/navit-nuc-layout@g' nuc_osd.xml
@@ -42,10 +42,13 @@ test:
     - ./navit:
         pwd: navit/bin/navit/
         background: true
-    - sleep 2
+# ratpoison display a small popup that results in a back area in the screenshot
+    - sleep 10
     - import -window root $CIRCLE_ARTIFACTS/default.png
     - >
       dbus-send --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_position string:"geo: $lng $lat";
+    - import -window root $CIRCLE_ARTIFACTS/position.png
+    - >
       dbus-send --print-reply --session --dest=org.navit_project.navit /org/navit_project/navit/default_navit org.navit_project.navit.navit.set_destination string:"geo: $dlng $dlat" string:"dbus";
 
     - sleep 2
