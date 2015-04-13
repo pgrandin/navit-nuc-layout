@@ -13,9 +13,9 @@
 
 
 <!-- right panel -->
-<osd x="-160" y="40"  w="160" h="115" type="navigation_next_turn" icon_src="%s_wh_70_70.png" background_color="#00000080" osd_configuration="8"/>
-<osd x="-160" y="155" w="160" h="40" type="text" label="${navigation.item[1].length[named]}" font_size="500" background_color="#00000080" osd_configuration="8"/>
-<osd x="-160" y="195" w="160" h="32" font_size="250" type="text" label="Alt : ${vehicle.position_height} m" />
+<osd x="-160" y="40"  w="160" h="32" font_size="250" type="text" label="Alt : ${vehicle.position_height} m" />
+<osd x="-160" y="72"  w="160" h="115" type="navigation_next_turn" icon_src="%s_wh_70_70.png" background_color="#00000080" osd_configuration="8"/>
+<osd x="-160" y="187" w="160" h="40" type="text" label="${navigation.item[1].length[named]}" font_size="500" background_color="#00000080" osd_configuration="8"/>
 <osd x="-160" y="255" w="85"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/zoom_in_64_64.png" command="zoom_in()" osd_configuration="12" osd_configuration="12"/>
 <osd x="-70"  y="255" w="85"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/zoom_out_64_64.png" command="zoom_out()" osd_configuration="12" osd_configuration="12"/>
 
@@ -28,16 +28,18 @@
 
 <!-- media -->
 <osd x="0"    y="-64" w=""  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
+
 <osd x="0"    y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-low.png"      accesskey="-" command='spawn("amixer", "set", "Headphone", "5%-")'/>
 <osd x="64"   y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk-media-forward-rtl.png" accesskey="a" command='gui.spotify_previous_track()'/>
 <osd x="128"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_play_ltr.png"    accesskey="e" command='gui.spotify_toggle()'/>
 <osd x="192"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-muted-blocking-panel.png"    accesskey="m" command='spawn("amixer", "sset", "Headphone", "toggle")'/>
-<osd x="-128" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_forward_ltr.png" accesskey="z" command='gui.spotify_next_track()'/>
+
 <osd x="-64"  y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-high.png"     accesskey="1" command='gui.spotify_volume_up()'/>
+<osd x="-128" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk_media_forward_ltr.png" accesskey="z" command='gui.spotify_next_track()'/>
 <osd x="-328" y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/slr-camera-icon.png"       command='spawn("/bin/bash","/home/navit/.navit/take_screenshot.sh")' />
 
-<osd name="icon_route_status" enabled="yes" type="button" command="" src="${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" x="-196" y="-64" />
-<osd name="my_osd_cmdif_1" h="1" w="1"  update_period="2"  enabled="yes" type="cmd_interface" x="-196"  y="-64" command='
+<osd name="icon_route_status" enabled="yes" type="button" command="" src="${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" x="-196" y="-63" />
+<osd name="my_osd_cmdif_1" h="1" w="1"  update_period="2"  enabled="yes" type="cmd_interface" x="-196"  y="-63" command='
     osd[@name=="icon_route_status"].src = 
     route.route_status==1     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/destination_set.xpm" : 
     (route.route_status==0     ? "${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" :  
@@ -48,13 +50,13 @@
     (route.route_status==33    ? "${NAVIT_SHAREDIR}/navit-nuc-layout/route.xpm" : "unhandled"
     )))))))
     '  />
-<osd name="button_3d" enabled="yes" type="button" x="-264" y="-64" src="${NAVIT_SHAREDIR}/navit-nuc-layout/3D.xpm" use_overlay="1" accesskey=" " command='
+<osd name="button_3d" enabled="yes" type="button" x="-264" y="-63" src="${NAVIT_SHAREDIR}/navit-nuc-layout/3D.xpm" use_overlay="1" accesskey=" " command='
 pitch=pitch==0?20:0;
 orientation=pitch==0?0:-1;
 osd[@name=="button_3d"].src = pitch==0?"${NAVIT_SHAREDIR}/navit-nuc-layout/2D.xpm":"${NAVIT_SHAREDIR}/navit-nuc-layout/3D.xpm";
 zoom=pitch==0?200:15;
 ' 
 />
-<osd enabled="yes" type="button" x="-328" y="-64" w="64" h="64"
+<osd enabled="yes" type="button" x="-392" y="-64" w="64" h="64"
     command="orientation=orientation==0?-1:0;pitch=pitch==0?15:0;zoom=32;pitch==0?zoom_to_route()"
     src="gui_map_64_64.png" osd_configuration="8"/>
