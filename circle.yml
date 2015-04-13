@@ -10,7 +10,7 @@ dependencies:
     - sudo apt-get install libjansson-dev
     - sudo apt-get install ratpoison
     - git clone https://github.com/pgrandin/navit.git
-    - cd navit; mkdir bin; cd bin; cmake -D graphics/qt_qpainter:BOOL=FALSE -D gui/qml:BOOL=FALSE -D USE_GOOGLEPLACES:BOOL=FALSE ../navit && make
+    - mkdir bin; cd bin; cmake -D graphics/qt_qpainter:BOOL=FALSE -D gui/qml:BOOL=FALSE -D USE_GOOGLEPLACES:BOOL=FALSE ../navit && make
 machine:
   environment:
     DISPLAY: :97
@@ -21,26 +21,26 @@ machine:
 test:
   post:
     - sed -i -e 's@name="Local GPS" profilename="car" enabled="yes" active="1"@name="Local GPS" profilename="car" enabled="no" active="0"@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@name="Demo" profilename="car" enabled="no" active="yes"@name="Demo" profilename="car" enabled="yes" active="yes" follow="1" refresh="1"@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@type="internal" enabled@type="internal" fullscreen="1" font_size="350" enabled@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@libbinding_dbus.so" active="no"@libbinding_dbus.so" active="yes"@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@<osd enabled="no" type="compass"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_osd.xml"/>@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@<osd enabled="no" type="eta"/>@<xi:include href="${HOME}/navit-nuc-layout/nuc_layout.xml"/>@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's@zoom="256"@zoom="32" tracking="1"@' navit.xml:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
     - sed -i -e 's/NAVIT_SHAREDIR/HOME/g' nuc_osd.xml
     - sed -i -e 's@${HOME}/.navit/nuc@${HOME}/navit-nuc-layout@g' nuc_osd.xml
     - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/navit_xvfb_97.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :97 -ac -screen 0 800x600x16
     - ratpoison:
         background: true
     - ./navit:
-        pwd: navit/bin/navit/
+        pwd: bin/navit/
         background: true
 # ratpoison display a small popup that results in a back area in the screenshot
     - sleep 10
