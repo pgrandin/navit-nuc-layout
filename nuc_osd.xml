@@ -27,7 +27,7 @@
 <osd x="0" y="-96" w="260" h="32" font_size="250" type="text" label="${vehicle.position_coord_geo[pos_deg]}" />
 
 <!-- media -->
-<osd x="0"    y="-64" w=""  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
+<osd x="0"    y="-64" w="800"  h="64" type="image"  src="${HOME}/.navit/nuc/bottom_banner.png" />
 
 <osd x="0"    y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/audio-volume-low.png"      accesskey="-" command='spawn("amixer", "set", "Headphone", "5%-")'/>
 <osd x="64"   y="-64" w="64"  h="64" type="button" src="${HOME}/.navit/nuc/gtk-media-forward-rtl.png" accesskey="a" command='gui.spotify_previous_track()'/>
