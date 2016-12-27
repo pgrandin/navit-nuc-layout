@@ -29,13 +29,13 @@
 <!-- media -->
 <osd x="0"    y="-64" w="800"  h="64" type="image"  src="${NAVIT_SHAREDIR}/navit-nuc-layout/bottom_banner.png" />
 
-<osd x="0"    y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-low.png"      accesskey="-" command='spawn("amixer", "-c", "1", "set", "Headphone", "5%-")'/>
-<osd x="64"   y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk-media-forward-rtl.png" accesskey="a" command='gui.spotify_previous_track()'/>
-<osd x="128"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_play_ltr.png"    accesskey="e" command='gui.spotify_toggle()'/>
-<osd x="192"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-muted-blocking-panel.png"    accesskey="m" command='spawn("amixer","-c", "1",  "sset", "Headphone", "toggle")'/>
+<osd x="0"    y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-low.png"      accesskey="-" command='volume_down()'/>
+<osd x="64"   y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk-media-forward-rtl.png" accesskey="a" command='audio_playback_previous()'/>
+<osd x="128"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_play_ltr.png"    accesskey="e" command='audio_playback_toggle()'/>
+<osd x="192"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-muted-blocking-panel.png"    accesskey="m" command='volume_toggle()'/>
 
-<osd x="-64"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-high.png"     accesskey="1" command='spawn("amixer", "-c", "1", "set", "Headphone", "5%+")'/>
-<osd x="-128" y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_forward_ltr.png" accesskey="z" command='gui.spotify_next_track()'/>
+<osd x="-64"  y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/audio-volume-high.png"     accesskey="1" command='volume_up()'/>
+<osd x="-128" y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/gtk_media_forward_ltr.png" accesskey="z" command='audio_playback_next()'/>
 <osd x="-328" y="-64" w="64"  h="64" type="button" src="${NAVIT_SHAREDIR}/navit-nuc-layout/slr-camera-icon.png"       command='spawn("/bin/bash","/home/navit/.navit/take_screenshot.sh")' />
 
 <osd name="icon_route_status" enabled="yes" type="button" command="" src="${NAVIT_SHAREDIR}/navit-nuc-layout/no_destination.xpm" x="-196" y="-63" />
